@@ -63,6 +63,17 @@
     }
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+    color:  var(--cinza4);
+    background-color: var(--cinza2);
+    padding: 8px;
+    gap: 16px;
+    border-radius: 4px;
+    box-shadow: 0 0 8px var(--cinza2);
+  }
+
 }
 
 @keyframes loadBar {
