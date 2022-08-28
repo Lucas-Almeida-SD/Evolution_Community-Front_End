@@ -1,0 +1,52 @@
+#address-information-form {
+  display: flex;
+  flex-direction: column;
+  color:  var(--cinza4);
+  background-color: var(--cinza2);
+  padding: 8px;
+  gap: 16px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px var(--cinza2);
+
+  h2 {
+    text-align: center;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    input {
+      font-size: 14px;
+      padding: 4px;
+      border-radius: 4px;
+      color: var(--cinza3);
+      background-color: var(--cinza1);
+      border: 0;
+    }
+
+    input:focus {
+      outline: 1px solid var(--primary);
+    }
+  }
+
+  .change-step {
+    display: flex;
+    justify-content:  space-between;
+
+    button {
+      background-color: var(--cinza3);
+      font-size: 14px;
+      padding: 8px;
+      margin: 8px 0;
+      border-radius: 4px;
+      border: 0;
+      cursor: not-allowed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+    }
+  }
+}
