@@ -1,6 +1,4 @@
 #registration {
-  display: flex;
-  justify-content: center;
   padding: 30px;
 
   #registration-steps {
@@ -8,7 +6,6 @@
     flex-direction: column;
     justify-content: center;
     gap: 18px;
-    
     .progress-bar {
       display: flex;
       justify-content: center;
@@ -61,23 +58,66 @@
         animation: loadBar 0.7s linear forwards;
       }
     }
-  }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    color:  var(--cinza4);
-    background-color: var(--cinza2);
-    padding: 8px;
-    gap: 16px;
-    border-radius: 4px;
-    box-shadow: 0 0 8px var(--cinza2);
-  }
+    .registration-forms {
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        color:  var(--cinza4);
+        background-color: var(--cinza2);
+        padding: 8px;
+        gap: 16px;
+        border-radius: 4px;
+        box-shadow: 0 0 8px var(--cinza2);
+        animation: appear 1s ease-in-out;
 
+        .change-step {
+          display: flex;
+          justify-content:  space-between;
+      
+          .back, .next {
+            font-size: 14px;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 4px;
+            border: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+          }
+
+          .back, .next:enabled {
+            background-color: var(--primary);
+            cursor: pointer;
+          }
+
+          .back:hover, .next:enabled:hover {
+            filter: brightness(0.7);
+          }
+
+          next:disabled {
+            background-color: var(--cinza3);
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }  
 }
 
 @keyframes loadBar {
   100% {
     transform: scaleX(1);
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1.0);
   }
 }
