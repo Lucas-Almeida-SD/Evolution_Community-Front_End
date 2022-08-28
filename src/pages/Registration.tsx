@@ -50,19 +50,25 @@ function Registration() {
           {renderSteps()}
         </div>
         <div className="registration-forms">
-          <PersonalInformationForm
-            setFinishedStep={setFinishedStep}
-            setCreateUser={setCreateUser}
-          />
-          <AddressInformationForm
-            setFinishedStep={setFinishedStep}
-            setCreateUser={setCreateUser}
-          />
-          <CommunityForm
-            setFinishedStep={setFinishedStep}
-            createUser={createUser}
-            setCreateUser={setCreateUser}
-          />
+          {(finishedStep === 0) && (
+            <PersonalInformationForm
+              setFinishedStep={setFinishedStep}
+              setCreateUser={setCreateUser}
+            />
+          )}
+          {(finishedStep === 1) && (
+            <AddressInformationForm
+              setFinishedStep={setFinishedStep}
+              setCreateUser={setCreateUser}
+            />
+          )}
+          {(finishedStep === 2) && (
+            <CommunityForm
+              setFinishedStep={setFinishedStep}
+              createUser={createUser}
+              setCreateUser={setCreateUser}
+            />
+          )}
         </div>
       </section>
     </main>
