@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { UserInfo } from '../interfaces/User.interface';
+import '../styles/PersonalInformationForm.scss';
 
 type Props = {
   setFinishedStep: Dispatch<SetStateAction<number>>
@@ -19,7 +20,7 @@ function PersonalInformationForm(props: Props) {
   };
 
   return (
-    <form>
+    <form id="personal-information-form">
       <h2>Informações Pessoais</h2>
       <label htmlFor="fullname">
         <span>Nome completo</span>
@@ -42,7 +43,7 @@ function PersonalInformationForm(props: Props) {
         <input id="phone" type="text" name="phone" onChange={handleChange} />
       </label>
       <label htmlFor="email">
-        <span>Telefone</span>
+        <span>Email</span>
         <input id="email" type="text" name="email" onChange={handleChange} />
       </label>
       <label htmlFor="password">
