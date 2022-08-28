@@ -3,7 +3,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import { DataUser } from '../interfaces/User.interface';
-import informationImg from '../assets/information.svg';
+import informationImg from '../assets/information.gif';
+import '../styles/Login.scss';
 
 function Login() {
   const { isFetching, setIsFetching, setUser } = useContext(MyContext);
@@ -31,17 +32,17 @@ function Login() {
     setIsFetching(true);
 
     const response = await request();
+    setIsFetching(false);
 
     if (response.error) return notifyLoginError();
 
     setUser({ ...response.data.user, token: response.data.token });
-    setIsFetching(false);
     return null;
   };
 
   return (
     <>
-      <main>
+      <main id="login">
         <section>
           <p>
             Faça parte de uma de nossas comunidades e receba informações de
@@ -73,7 +74,7 @@ function Login() {
               type="submit"
               disabled={isFetching || !email || !password}
             >
-              Entrar
+              {(!isFetching) ? 'Entrar' : <div className="loading">{`${''}`}</div>}
             </button>
             <div>
               <span>
