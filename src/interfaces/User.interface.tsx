@@ -1,7 +1,7 @@
 export interface UserInfo {
-  CEP: number,
-  CPF: number
-  RG: number,
+  CEP: string,
+  CPF: string,
+  RG: string,
   address: string,
   birthDate: string,
   city: string,
@@ -9,10 +9,10 @@ export interface UserInfo {
   district: string,
   email: string,
   fullname: string,
-  houseNumber: number,
+  houseNumber: string,
   password: string,
-  phone: number,
-  plan: string,
+  phone: string,
+  community: string,
   publicPlace: string,
 }
 
