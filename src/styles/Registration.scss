@@ -1,0 +1,64 @@
+#registration {
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+
+  .progress-bar {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+
+    .step {
+      transition: 1s;
+      position: relative;
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border:  2px solid black;
+      border-radius: 50%;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--cinza4);
+
+      img {
+      width: 30px;
+      height: 30px;
+      }
+
+      &::before, &::after {
+        content: '';
+        border:  2px solid black;
+        position: absolute;
+        left: 31px;
+        height: 4px;
+        width: 54px;
+        border-radius: 9999px;
+        background-color: var(--cinza4);
+      }
+
+      &:last-child::before, &:last-child::after {
+        display: none;
+      }
+    }
+
+    .finished {
+      transition: 1s;
+      background-color: var(--primary);
+    }
+
+    .finished::after {
+      background-color: var(--primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: loadBar 0.7s linear forwards;
+    }
+  }
+}
+
+@keyframes loadBar {
+  100% {
+    transform: scaleX(1);
+  }
+}
