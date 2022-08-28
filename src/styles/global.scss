@@ -1,0 +1,17 @@
+:root {
+  --cinza1: #121214;
+  --cinza2: #202024;
+  --cinza3: #687372;
+  --cinza4: #727274;
+  --primary: #8257E5;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cinza1);
+}
