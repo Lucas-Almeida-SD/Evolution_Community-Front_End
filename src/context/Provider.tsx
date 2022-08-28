@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useMemo } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { User } from '../interfaces/User.interface';
 import MyContext from './MyContext';
 
@@ -11,12 +11,13 @@ function Provider(props: ProviderProps) {
   const [user, setUser] = useState<User | undefined>(undefined);
   const [isFetching, setIsFetching] = useState(false);
 
-  const values = useMemo(() => ({
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const values = {
     user,
     setUser,
     isFetching,
     setIsFetching,
-  }), []);
+  };
 
   return (
     <MyContext.Provider value={values}>
