@@ -24,7 +24,8 @@ export interface DataUser {
   data: {
     user: UserInfo,
     token: string,
-  }
+  },
+  error: boolean,
 }
 
 export interface UserError {
