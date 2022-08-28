@@ -4,6 +4,7 @@ import healthCommunityImg from '../assets/health_community.svg';
 import environmentCommunityImg from '../assets/environment_community.svg';
 import businessCommunityImg from '../assets/business_community.svg';
 import { UserInfo } from '../interfaces/User.interface';
+import '../styles/CommunityForm.scss';
 
 type Props = {
   setFinishedStep: Dispatch<SetStateAction<number>>
@@ -43,7 +44,7 @@ function CommunityForm(props: Props) {
           id={id}
           type="radio"
           value={id}
-          name="community-card"
+          name="community"
           onChange={handleChange}
         />
       </label>
