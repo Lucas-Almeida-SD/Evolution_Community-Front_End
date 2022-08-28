@@ -55,8 +55,8 @@ function AddressInformationForm(props: Props) {
         <input id="cep" type="text" name="CEP" onChange={handleChange} />
       </label>
       <div className="change-step">
-        <button type="button" onClick={handleClickPreviousBtn}>Voltar</button>
-        <button type="button" onClick={handleClickNextBtn}>Próximo</button>
+        <button type="button" className="back" onClick={handleClickPreviousBtn}>Voltar</button>
+        <button type="button" className="next" onClick={handleClickNextBtn}>Próximo</button>
       </div>
     </form>
   );

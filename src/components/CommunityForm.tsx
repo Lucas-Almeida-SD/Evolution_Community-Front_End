@@ -64,8 +64,8 @@ function CommunityForm(props: Props) {
       <h2>Selecione sua comunidade</h2>
       {plans.map((plan) => renderPlanCard(plan.title, plan.src, plan.title, plan.id))}
       <div className="change-step">
-        <button type="button" onClick={handleClickPreviousBtn}>Voltar</button>
-        <button type="button" onClick={handleClickNextBtn}>Finalizar</button>
+        <button type="button" className="back" onClick={handleClickPreviousBtn}>Voltar</button>
+        <button type="button" className="next" onClick={handleClickNextBtn}>Finalizar</button>
       </div>
     </form>
   );
