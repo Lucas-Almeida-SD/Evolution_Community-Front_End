@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { UserInfo } from '../interfaces/User.interface';
+import '../styles/AddressInformationForm.scss';
 
 type Props = {
   setFinishedStep: Dispatch<SetStateAction<number>>
@@ -23,7 +24,7 @@ function AddressInformationForm(props: Props) {
   };
 
   return (
-    <form>
+    <form id="address-information-form">
       <h2>Informações de Endereço</h2>
       <label htmlFor="publicPlace">
         <span>Logradouro</span>
