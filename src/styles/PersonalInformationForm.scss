@@ -33,5 +33,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:enabled {
+      background-color: var(--primary);
+      cursor: pointer;
+    }
   }
 }
