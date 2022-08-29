@@ -53,12 +53,14 @@ function Registration() {
           {(finishedStep === 0) && (
             <PersonalInformationForm
               setFinishedStep={setFinishedStep}
+              createUser={createUser}
               setCreateUser={setCreateUser}
             />
           )}
           {(finishedStep === 1) && (
             <AddressInformationForm
               setFinishedStep={setFinishedStep}
+              createUser={createUser}
               setCreateUser={setCreateUser}
             />
           )}
