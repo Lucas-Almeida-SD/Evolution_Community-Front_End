@@ -27,6 +27,8 @@ function CommunityForm(props: Props) {
     setCreateUser((currentValue) => ({ ...currentValue, [name]: value }));
   };
 
+  const fieldsIsValid = () => (createUser.community !== '');
+
   const renderPlanCard = (
     title: string,
     srcImg: string,
@@ -65,7 +67,7 @@ function CommunityForm(props: Props) {
       {plans.map((plan) => renderPlanCard(plan.title, plan.src, plan.title, plan.id))}
       <div className="change-step">
         <button type="button" className="back" onClick={handleClickPreviousBtn}>Voltar</button>
-        <button type="button" className="next" onClick={handleClickNextBtn}>Finalizar</button>
+        <button type="button" className="next" disabled={!fieldsIsValid()} onClick={handleClickNextBtn}>Finalizar</button>
       </div>
     </form>
   );
