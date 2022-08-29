@@ -1,9 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import technologyCommunityImg from '../assets/technology_community.svg';
-import healthCommunityImg from '../assets/health_community.svg';
-import environmentCommunityImg from '../assets/environment_community.svg';
-import businessCommunityImg from '../assets/business_community.svg';
+import communities from '../helpers/communities';
 import { UserInfo } from '../interfaces/User.interface';
 import '../styles/CommunityForm.scss';
 
@@ -26,13 +23,6 @@ function CommunityForm(props: Props) {
     setIsFetching,
   } = props;
 
-  const plans = [
-    { title: 'Tecnologia', id: 'technology-community', src: technologyCommunityImg },
-    { title: 'Saúde', id: 'health-community', src: healthCommunityImg },
-    { title: 'Meio Ambiente', id: 'environment-community', src: environmentCommunityImg },
-    { title: 'Business', id: 'business-community', src: businessCommunityImg },
-  ];
-
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
     setCreateUser((currentValue) => ({ ...currentValue, [name]: value }));
@@ -42,21 +32,21 @@ function CommunityForm(props: Props) {
 
   const renderPlanCard = (
     title: string,
-    srcImg: string,
-    altImg: string,
+    value: string,
     id: string,
+    src: string,
   ) => (
     <div
-      className={`community-card${(id === createUser.community) ? ' selected' : ''}`}
+      className={`community-card${(value === createUser.community) ? ' selected' : ''}`}
       key={id}
     >
       <span>{title}</span>
       <label htmlFor={id}>
-        <img src={srcImg} alt={altImg} />
+        <img src={src} alt={title} />
         <input
           id={id}
           type="radio"
-          value={id}
+          value={value}
           name="community"
           onChange={handleChange}
         />
@@ -84,7 +74,7 @@ function CommunityForm(props: Props) {
     <>
       <form id="community-form">
         <h2>Selecione sua comunidade</h2>
-        {plans.map((plan) => renderPlanCard(plan.title, plan.src, plan.title, plan.id))}
+        {communities.map((plan) => renderPlanCard(plan.title, plan.value, plan.id, plan.src))}
         <div className="change-step">
           <button
             type="button"
