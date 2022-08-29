@@ -2,7 +2,9 @@ import { isExists } from 'date-fns';
 import { UserInfo } from '../interfaces/User.interface';
 
 const validateString = (string: string): boolean => {
-  const regex = /[a-zA-z\s]{1,}/;
+  if (string[0] === ' ' || string[string.length - 1] === ' ') return false;
+
+  const regex = /[a-zA-zà-úÀ-Ú\s]{1,}/;
   const match = string.match(regex);
 
   if (!match || match[0] !== string) return false;
@@ -11,6 +13,8 @@ const validateString = (string: string): boolean => {
 };
 
 const validateNumber = (string: string): boolean => {
+  if (string[0] === ' ' || string[string.length - 1] === ' ') return false;
+
   const regex = /[0-9]{1,}/;
   const match = string.match(regex);
 
@@ -93,6 +97,8 @@ export const validateBirthDate = (user: UserInfo): boolean => {
 
 export const validatePassword = (user: UserInfo): boolean => {
   const { password } = user;
+
+  if (password[0] === ' ' || password[password.length - 1] === ' ') return false;
 
   if (password.length < 8) return false;
 
