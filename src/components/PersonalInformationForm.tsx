@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   validateBirthDate,
   validateCPF,
@@ -20,8 +21,13 @@ type Props = {
 
 function PersonalInformationForm(props: Props) {
   const { setFinishedStep, createUser, setCreateUser } = props;
+  const history = useHistory();
 
-  const handleClick = () => {
+  const handleClickPreviousBtn = () => {
+    history.push('/');
+  };
+
+  const handleClickNextBtn = () => {
     setFinishedStep((currentValue) => currentValue + 1);
   };
 
@@ -113,7 +119,23 @@ function PersonalInformationForm(props: Props) {
         isValid={validatePassword(createUser)}
         onChange={handleChange}
       />
-      <button type="button" disabled={!fieldsIsValid()} onClick={handleClick}>Próximo</button>
+      <div className="change-step">
+        <button
+          type="button"
+          className="back"
+          onClick={handleClickPreviousBtn}
+        >
+          Voltar
+        </button>
+        <button
+          type="button"
+          className="next"
+          disabled={!fieldsIsValid()}
+          onClick={handleClickNextBtn}
+        >
+          Próximo
+        </button>
+      </div>
     </form>
   );
 }
