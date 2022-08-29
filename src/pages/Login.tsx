@@ -1,6 +1,6 @@
 import React, { useState, FormEvent, useContext } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 import { DataUser } from '../interfaces/User.interface';
 import informationImg from '../assets/information.gif';
@@ -10,6 +10,7 @@ function Login() {
   const { isFetching, setIsFetching, setUser } = useContext(MyContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   const URL = 'https://evolution-community.herokuapp.com/users/login';
 
@@ -37,7 +38,8 @@ function Login() {
     if (response.error) return notifyLoginError();
 
     setUser({ ...response.data.user, token: response.data.token });
-    return null;
+
+    return history.push('/dashboard');
   };
 
   return (
