@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PersonalInformationForm from '../components/PersonalInformationForm';
 import AddressInformationForm from '../components/AddressInformationForm';
 import CommunityForm from '../components/CommunityForm';
 import checkImg from '../assets/check.png';
 import { UserInfo } from '../interfaces/User.interface';
 import '../styles/Registration.scss';
+import TerminatedUser from '../components/TerminatedUser';
 
 function Registration() {
   const [finishedStep, setFinishedStep] = useState<number>(0);
+  const { location: { pathname } } = useHistory();
+
+  const message = (pathname.includes('registration'))
+    ? 'Usuário cadastrado com sucesso!'
+    : 'Dados atualizados com sucesso!';
+
   const [createUser, setCreateUser] = useState<UserInfo>({
     CEP: '',
     CPF: '',
@@ -69,6 +77,12 @@ function Registration() {
               setFinishedStep={setFinishedStep}
               createUser={createUser}
               setCreateUser={setCreateUser}
+            />
+          )}
+          {(finishedStep > 2) && (
+            <TerminatedUser
+              message={message}
+              goTo={(pathname.includes('registration') ? '/' : '/dashboard')}
             />
           )}
         </div>
