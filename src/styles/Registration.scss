@@ -72,6 +72,30 @@
         box-shadow: 0 0 8px var(--cinza2);
         animation: appear 1s ease-in-out;
 
+        .input-div {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+
+          .content-div {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            label {
+              width: 100%;
+
+              input {
+                width: 100%;
+              }
+            }
+
+            img {
+              width: 24px;
+            }
+          }
+        }
+        
         .change-step {
           display: flex;
           justify-content:  space-between;
@@ -97,7 +121,7 @@
             filter: brightness(0.7);
           }
 
-          next:disabled {
+          .next:disabled {
             background-color: var(--cinza3);
             cursor: not-allowed;
           }
