@@ -89,6 +89,7 @@ function CommunityForm(props: Props) {
           <button
             type="button"
             className="back"
+            disabled={isFetching}
             onClick={handleClickPreviousBtn}
           >
             Volta
