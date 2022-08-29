@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import technologyCommunityImg from '../assets/technology_community.svg';
 import healthCommunityImg from '../assets/health_community.svg';
 import environmentCommunityImg from '../assets/environment_community.svg';
@@ -10,10 +11,20 @@ type Props = {
   setFinishedStep: Dispatch<SetStateAction<number>>
   createUser: UserInfo
   setCreateUser: Dispatch<SetStateAction<UserInfo>>
+  request(): Promise<{ message: string, error: boolean }>
+  isFetching: boolean
+  setIsFetching: Dispatch<SetStateAction<boolean>>
 };
 
 function CommunityForm(props: Props) {
-  const { setFinishedStep, createUser, setCreateUser } = props;
+  const {
+    setFinishedStep,
+    createUser,
+    setCreateUser,
+    request,
+    isFetching,
+    setIsFetching,
+  } = props;
 
   const plans = [
     { title: 'Tecnologia', id: 'technology-community', src: technologyCommunityImg },
@@ -57,19 +68,43 @@ function CommunityForm(props: Props) {
     setFinishedStep((currentValue) => currentValue - 1);
   };
 
-  const handleClickNextBtn = () => {
-    setFinishedStep((currentValue) => currentValue + 1);
+  const notifyCreateUserError = (message: string) => toast.error(message);
+
+  const handleClickFinishtBtn = async () => {
+    setIsFetching(true);
+    const resultRequest = await request();
+    setIsFetching(false);
+
+    if (resultRequest.error) return notifyCreateUserError(resultRequest.message);
+
+    return setFinishedStep((currentValue) => currentValue + 1);
   };
 
   return (
-    <form id="community-form">
-      <h2>Selecione sua comunidade</h2>
-      {plans.map((plan) => renderPlanCard(plan.title, plan.src, plan.title, plan.id))}
-      <div className="change-step">
-        <button type="button" className="back" onClick={handleClickPreviousBtn}>Voltar</button>
-        <button type="button" className="next" disabled={!fieldsIsValid()} onClick={handleClickNextBtn}>Finalizar</button>
-      </div>
-    </form>
+    <>
+      <form id="community-form">
+        <h2>Selecione sua comunidade</h2>
+        {plans.map((plan) => renderPlanCard(plan.title, plan.src, plan.title, plan.id))}
+        <div className="change-step">
+          <button
+            type="button"
+            className="back"
+            onClick={handleClickPreviousBtn}
+          >
+            Volta
+          </button>
+          <button
+            type="button"
+            className="next"
+            disabled={!fieldsIsValid() || isFetching}
+            onClick={handleClickFinishtBtn}
+          >
+            {(!isFetching) ? 'Finalizar' : <div className="loading">{`${''}`}</div>}
+          </button>
+        </div>
+      </form>
+      <Toaster />
+    </>
   );
 }
 
