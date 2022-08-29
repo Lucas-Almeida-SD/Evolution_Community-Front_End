@@ -121,7 +121,7 @@
             filter: brightness(0.7);
           }
 
-          .next:disabled {
+          .back:disabled, .next:disabled {
             background-color: var(--cinza3);
             cursor: not-allowed;
           }
