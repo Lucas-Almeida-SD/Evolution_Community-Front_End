@@ -24,5 +24,6 @@
     ],
     "root": true,
     "rules": {
+        "no-alert": "off"
     }
 }
