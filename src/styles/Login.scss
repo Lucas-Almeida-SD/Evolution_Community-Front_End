@@ -160,12 +160,3 @@
     transform: translateX(10px);
   }
 }
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.5);
-  }
-  100% {
-    transform: translateX(1.2);
-  }
-}
