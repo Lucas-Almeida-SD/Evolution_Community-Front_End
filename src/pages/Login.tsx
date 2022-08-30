@@ -5,25 +5,13 @@ import MyContext from '../context/MyContext';
 import { DataUser } from '../interfaces/User.interface';
 import informationImg from '../assets/information.gif';
 import '../styles/Login.scss';
+import requestGetUser from '../helpers/requestGetUser';
 
 function Login() {
   const { isFetching, setIsFetching, setUser } = useContext(MyContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
-
-  const URL = 'https://evolution-community.herokuapp.com/users/login';
-
-  const request = async (): Promise<DataUser> => (
-    fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((result) => result.json())
-      .then((json) => json));
 
   const notifyLoginError = () => toast.error('Email ou senha inválida!');
 
@@ -32,8 +20,12 @@ function Login() {
 
     setIsFetching(true);
 
-    const response = await request();
+    let response = await requestGetUser(email, password);
     setIsFetching(false);
+
+    if (!response) return notifyLoginError();
+
+    response = response as DataUser;
 
     if (response.error) return notifyLoginError();
 
