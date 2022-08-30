@@ -8,8 +8,8 @@ type Props = {
   id: string;
   type: string;
   name: string;
-  value:string
-  isValid: boolean,
+  value:string;
+  isValid: boolean;
   onChange(props: React.ChangeEvent<HTMLInputElement>): void;
 };
 
