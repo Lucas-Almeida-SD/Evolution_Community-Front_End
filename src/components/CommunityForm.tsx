@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import communities from '../helpers/communities';
 import { UserInfo } from '../interfaces/User.interface';
 import '../styles/CommunityForm.scss';
@@ -71,31 +71,28 @@ function CommunityForm(props: Props) {
   };
 
   return (
-    <>
-      <form id="community-form">
-        <h2>Selecione sua comunidade</h2>
-        {communities.map((plan) => renderPlanCard(plan.title, plan.value, plan.id, plan.src))}
-        <div className="change-step">
-          <button
-            type="button"
-            className="back"
-            disabled={isFetching}
-            onClick={handleClickPreviousBtn}
-          >
-            Volta
-          </button>
-          <button
-            type="button"
-            className="next"
-            disabled={!fieldsIsValid() || isFetching}
-            onClick={handleClickFinishtBtn}
-          >
-            {(!isFetching) ? 'Finalizar' : <div className="loading">{`${''}`}</div>}
-          </button>
-        </div>
-      </form>
-      <Toaster />
-    </>
+    <form id="community-form">
+      <h2>Selecione sua comunidade</h2>
+      {communities.map((plan) => renderPlanCard(plan.title, plan.value, plan.id, plan.src))}
+      <div className="change-step">
+        <button
+          type="button"
+          className="back"
+          disabled={isFetching}
+          onClick={handleClickPreviousBtn}
+        >
+          Volta
+        </button>
+        <button
+          type="button"
+          className="next"
+          disabled={!fieldsIsValid() || isFetching}
+          onClick={handleClickFinishtBtn}
+        >
+          {(!isFetching) ? 'Finalizar' : <div className="loading">{`${''}`}</div>}
+        </button>
+      </div>
+    </form>
   );
 }
 
