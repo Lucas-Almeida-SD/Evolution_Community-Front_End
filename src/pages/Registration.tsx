@@ -1,22 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PersonalInformationForm from '../components/PersonalInformationForm';
 import AddressInformationForm from '../components/AddressInformationForm';
 import CommunityForm from '../components/CommunityForm';
 import checkImg from '../assets/check.png';
-import { UserInfo } from '../interfaces/User.interface';
+import { User, UserInfo } from '../interfaces/User.interface';
 import '../styles/Registration.scss';
 import TerminatedUser from '../components/TerminatedUser';
 import MyContext from '../context/MyContext';
 
 function Registration() {
-  const { isFetching, setIsFetching } = useContext(MyContext);
+  const { isFetching, setIsFetching, user } = useContext(MyContext);
   const [finishedStep, setFinishedStep] = useState<number>(0);
   const { location: { pathname } } = useHistory();
 
+  const newUser = user as User;
+  const isRegistrationRoute = pathname.includes('registration');
+
   const URL = 'https://evolution-community.herokuapp.com/users';
 
-  const message = (pathname.includes('registration'))
+  const message = (isRegistrationRoute)
     ? 'Usuário cadastrado com sucesso!'
     : 'Dados atualizados com sucesso!';
 
@@ -38,16 +41,41 @@ function Registration() {
     publicPlace: '',
   });
 
+  useEffect(() => {
+    if (!isRegistrationRoute) {
+      setCreateUser((currentValue) => ({
+        ...currentValue,
+        CEP: newUser.CEP,
+        CPF: newUser.CPF,
+        RG: newUser.RG,
+        address: newUser.address,
+        birthDate: newUser.birthDate,
+        city: newUser.city,
+        complement: newUser.complement,
+        district: newUser.district,
+        email: newUser.email,
+        fullname: newUser.fullname,
+        houseNumber: newUser.houseNumber,
+        phone: newUser.phone,
+        community: newUser.community,
+        publicPlace: newUser.publicPlace,
+      }));
+    }
+  }, []);
+
   const request = async (): Promise<{ message: string, error: boolean }> => {
-    const newCreateUser = {
+    const newCreateUser = JSON.parse(JSON.stringify({
       ...createUser,
       birthDate: createUser.birthDate.split('-').reverse().join('/'),
-    };
+    }));
+
+    if (!isRegistrationRoute) delete newCreateUser.email;
 
     const result = await fetch(URL, {
-      method: 'POST',
+      method: (isRegistrationRoute) ? 'POST' : 'PUT',
       headers: {
         'Content-type': 'application/json',
+        authorization: (isRegistrationRoute) ? '' : newUser.token,
       },
       body: JSON.stringify(newCreateUser),
     });
@@ -86,6 +114,8 @@ function Registration() {
             setFinishedStep={setFinishedStep}
             createUser={createUser}
             setCreateUser={setCreateUser}
+            isRegistrationRoute={isRegistrationRoute}
+            goTo={(isRegistrationRoute ? '/' : '/dashboard')}
           />
           )}
           {(finishedStep === 1) && (
@@ -108,7 +138,7 @@ function Registration() {
           {(finishedStep > 2) && (
           <TerminatedUser
             message={message}
-            goTo={(pathname.includes('registration') ? '/' : '/dashboard')}
+            goTo={(isRegistrationRoute ? '/' : '/dashboard')}
           />
           )}
         </div>
