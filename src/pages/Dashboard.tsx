@@ -4,6 +4,7 @@ import UserInformation from '../components/UserInformation';
 import MyContext from '../context/MyContext';
 import communities from '../helpers/communities';
 import { User } from '../interfaces/User.interface';
+import '../styles/Dashboard.scss';
 
 type Community = {
   title: string,
@@ -30,7 +31,7 @@ function Dashboard() {
   return (
     <main id="dashboard">
       <section>
-        <div>
+        <div className="community-div">
           <img src={myCommunity.src} alt={myCommunity.title} />
           <h2>{myCommunity.title}</h2>
         </div>
