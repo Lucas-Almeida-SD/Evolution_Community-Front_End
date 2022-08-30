@@ -1,18 +1,21 @@
 #community-form {
-  h2 {
-    text-align: center;
-  }
 
   .community-card {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--formInput);
     box-shadow: 0 0 4px var(--cinza4);
     border-radius: 4px;
     padding: 8px;
     cursor: pointer;
+    align-self: center;
+    width: 80%;
+    transition: 0.5s;
+    transform: scale(0.9);
 
     label {
+
       img {
         width: 100%;
         cursor: pointer;
@@ -29,8 +32,8 @@
   }
 
   .selected {
-    background-color: var(--cinza1);
     border: 1px solid var(--primary);
+    transform: scale(1.1);
   }
 
   .loading {

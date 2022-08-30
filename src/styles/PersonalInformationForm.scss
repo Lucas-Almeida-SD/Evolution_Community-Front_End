@@ -1,42 +1,28 @@
 #personal-information-form {
-  h2 {
-    text-align: center;
-  }
+  
+  .input-div {
 
-  label {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    input {
-      font-size: 14px;
-      padding: 4px;
-      border-radius: 4px;
-      color: var(--cinza3);
-      background-color: var(--cinza1);
-      border: 0;
+    span {
+      color: var(--formInput);
     }
-
-    input:focus {
-      outline: 1px solid var(--primary);
-    }
-  }
-
-  button {
-    background-color: var(--cinza3);
-    font-size: 14px;
-    padding: 8px;
-    margin: 8px 0;
-    border-radius: 4px;
-    border: 0;
-    cursor: not-allowed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:enabled {
-      background-color: var(--primary);
-      cursor: pointer;
+  
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+  
+      input {
+        font-size: 14px;
+        padding: 4px;
+        border-radius: 4px;
+        color: var(--formInput);
+        background-color: var(--formInputBackground);
+        border: 0;
+      }
+  
+      input:focus {
+        outline: 1px solid var(--primary);
+      }
     }
   }
 }

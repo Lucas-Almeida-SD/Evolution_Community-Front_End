@@ -1,24 +1,38 @@
 #address-information-form {
   h2 {
     text-align: center;
+    color: var(--formHeadline);
+    background-color: var(--primary);
+    width: 80%;
+    align-self: center;
+    padding: 10px 8px;
+    border-radius: 4px;
+    transform: translateY(-30px);
   }
 
-  label {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  .input-div {
 
-    input {
-      font-size: 14px;
-      padding: 4px;
-      border-radius: 4px;
-      color: var(--cinza3);
-      background-color: var(--cinza1);
-      border: 0;
+    span {
+      color: var(--formInput);
     }
-
-    input:focus {
-      outline: 1px solid var(--primary);
+  
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+  
+      input {
+        font-size: 14px;
+        padding: 4px;
+        border-radius: 4px;
+        color: var(--formInput);
+        background-color: var(--formInputBackground);
+        border: 0;
+      }
+  
+      input:focus {
+        outline: 1px solid var(--primary);
+      }
     }
   }
 }
