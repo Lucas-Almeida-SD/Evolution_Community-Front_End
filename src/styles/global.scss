@@ -4,6 +4,19 @@
   --cinza3: #687372;
   --cinza4: #727274;
   --primary: #8257E5;
+  --secondary: #DB4FBE;
+  --background: #242629;
+  --headline: #fffffe;
+  --headlineBackground: #2cb67d;
+  --paragraph: #94a1b2;
+  --paragraphBackground: #242629;
+  --cardBackground: #16161a;
+  --cardHeadline: #fffffe;
+  --cardParagraph: #94a1b2;
+  --formBackground: #16161a;
+  --formHeadline: #fffffe;
+  --formInput: #94a1b2;
+  --formInputBackground: #242629;
 }
 
 * {
@@ -13,5 +26,5 @@
 }
 
 body {
-  background-color: var(--cinza1);
+  background-color: var(--background);
 }
