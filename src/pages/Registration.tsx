@@ -49,7 +49,7 @@ function Registration() {
         CPF: newUser.CPF,
         RG: newUser.RG,
         address: newUser.address,
-        birthDate: newUser.birthDate,
+        birthDate: newUser.birthDate.split('/').reverse().join('-'),
         city: newUser.city,
         complement: newUser.complement,
         district: newUser.district,
