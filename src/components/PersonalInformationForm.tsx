@@ -1,5 +1,6 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import MyContext from '../context/MyContext';
 import {
   validateBirthDate,
   validateCPF,
@@ -20,11 +21,16 @@ type Props = {
 };
 
 function PersonalInformationForm(props: Props) {
+  const { user } = useContext(MyContext);
   const { setFinishedStep, createUser, setCreateUser } = props;
   const history = useHistory();
 
   const handleClickPreviousBtn = () => {
-    history.push('/');
+    if (user) {
+      history.push('/dashboard');
+    } else {
+      history.push('/');
+    }
   };
 
   const handleClickNextBtn = () => {
