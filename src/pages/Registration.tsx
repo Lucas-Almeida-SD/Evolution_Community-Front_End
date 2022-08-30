@@ -139,6 +139,8 @@ function Registration() {
           <TerminatedUser
             message={message}
             goTo={(isRegistrationRoute ? '/' : '/dashboard')}
+            email={(user) ? (user as User).email : ''}
+            password={createUser.password}
           />
           )}
         </div>
