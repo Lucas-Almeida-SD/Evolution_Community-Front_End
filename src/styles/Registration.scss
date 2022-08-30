@@ -126,7 +126,7 @@
             cursor: pointer;
           }
 
-          .back:hover, .next:enabled:hover {
+          .back:enabled:hover, .next:enabled:hover {
             filter: brightness(0.7);
           }
 
