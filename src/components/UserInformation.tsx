@@ -8,7 +8,7 @@ type Props = {
 function UserInformation(props: Props) {
   const { title, content } = props;
   return (
-    <div className="information-div">
+    <div className="user-information-div">
       <h3>{title}</h3>
       <p>{content}</p>
     </div>
