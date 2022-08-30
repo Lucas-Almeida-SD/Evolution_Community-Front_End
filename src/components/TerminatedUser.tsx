@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import MyContext from '../context/MyContext';
 import requestGetUser from '../helpers/requestGetUser';
 import { DataUser } from '../interfaces/User.interface';
@@ -24,7 +24,7 @@ function TerminatedUser(props: Props) {
     password,
   } = props;
 
-  const notifyLoginError = () => toast.error('Oops. Algo deu errado!');
+  const notifyGetUserError = () => toast.error('Oops. Algo deu errado!');
 
   const handleClick = async () => {
     if (goTo.includes('dashboard')) {
@@ -34,11 +34,11 @@ function TerminatedUser(props: Props) {
 
       setIsFetching(false);
 
-      if (!response) return notifyLoginError();
+      if (!response) return notifyGetUserError();
 
       response = response as DataUser;
 
-      if (response.error) return notifyLoginError();
+      if (response.error) return notifyGetUserError();
 
       setUser({ ...response.data.user, token: response.data.token });
     }
@@ -47,21 +47,18 @@ function TerminatedUser(props: Props) {
   };
 
   return (
-    <>
-      <section id="completed-forms">
-        <div className="information">
-          <p>{message}</p>
-          <button
-            type="button"
-            disabled={isFetching}
-            onClick={handleClick}
-          >
-            {(!isFetching) ? 'OK' : <div className="loading">{`${''}`}</div>}
-          </button>
-        </div>
-      </section>
-      <Toaster />
-    </>
+    <section id="completed-forms">
+      <div className="information">
+        <p>{message}</p>
+        <button
+          type="button"
+          disabled={isFetching}
+          onClick={handleClick}
+        >
+          {(!isFetching) ? 'OK' : <div className="loading">{`${''}`}</div>}
+        </button>
+      </div>
+    </section>
   );
 }
 
