@@ -1,6 +1,5 @@
-import React, { Dispatch, SetStateAction, useContext } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { useHistory } from 'react-router-dom';
-import MyContext from '../context/MyContext';
 import {
   validateBirthDate,
   validateCPF,
@@ -18,19 +17,23 @@ type Props = {
   setFinishedStep: Dispatch<SetStateAction<number>>
   createUser: UserInfo
   setCreateUser: Dispatch<SetStateAction<UserInfo>>
+  goTo: string;
+  isRegistrationRoute: boolean;
 };
 
 function PersonalInformationForm(props: Props) {
-  const { user } = useContext(MyContext);
-  const { setFinishedStep, createUser, setCreateUser } = props;
   const history = useHistory();
 
+  const {
+    setFinishedStep,
+    createUser,
+    setCreateUser,
+    goTo,
+    isRegistrationRoute,
+  } = props;
+
   const handleClickPreviousBtn = () => {
-    if (user) {
-      history.push('/dashboard');
-    } else {
-      history.push('/');
-    }
+    history.push(goTo);
   };
 
   const handleClickNextBtn = () => {
@@ -105,6 +108,7 @@ function PersonalInformationForm(props: Props) {
         isValid={validatePhone(createUser)}
         onChange={handleChange}
       />
+      {(isRegistrationRoute) && (
       <Input
         htmlFor="email"
         spanContent="Email"
@@ -115,6 +119,7 @@ function PersonalInformationForm(props: Props) {
         isValid={validateEmail(createUser)}
         onChange={handleChange}
       />
+      )}
       <Input
         htmlFor="password"
         spanContent="Senha"
