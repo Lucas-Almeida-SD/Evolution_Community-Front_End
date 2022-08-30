@@ -1,0 +1,108 @@
+#dashboard {
+  padding: 30px 0;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+
+    .community-div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      gap: 12px;
+
+      img {
+        border-radius: 50%;
+        width: 60%;
+        max-width: 200px;
+        border: 1px solid var(--primary);
+      }
+
+      h2 {
+        color: var(--secondary);
+      }
+    }
+
+    .informations {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      width: 100%;
+      padding: 20px;
+
+      .personal-informations, .address-informations {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        background-color: var(--cardBackground);
+        padding: 14px 8px;
+        border-radius: 8px;
+
+        .title {
+          text-align: center;
+          color: var(--cardHeadline);
+          background-color: var(--primary);
+          width: 80%;
+          align-self: center;
+          padding: 12px 8px;
+          border-radius: 4px;
+          transform: translateY(-30px);
+        }
+
+        .user-information-div {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+
+          h3 {
+            color: var(--cardParagraph);
+          }
+
+          p {
+            background-color: var(--paragraphBackground);
+            padding: 4px;
+            border-radius: 4px;
+            color: var(--cardParagraph);
+            overflow: hidden;
+          }
+        }
+      }
+
+    }
+
+    .user-buttons {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+
+      .edit-profile, .delete-profile {
+        font-size: 14px;
+        padding: 8px;
+        margin: 8px 0;
+        border-radius: 4px;
+        border: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 120px;
+      }
+
+      .edit-profile:enabled {
+        background-color: #3F8FC4;
+      }
+
+      .delete-profile:enabled {
+        background-color: #FF0018;
+      }
+    }
+  }
+}
