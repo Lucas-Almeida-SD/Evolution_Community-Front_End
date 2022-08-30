@@ -55,21 +55,21 @@ function Dashboard() {
             <UserInformation title="Cidade" content={myUser.city} />
             <UserInformation title="CEP" content={myUser.CEP} />
           </div>
-          <div className="user-buttons">
-            <button
-              type="button"
-              className="edit-profile"
-              onClick={handleEditProfile}
-            >
-              Editar perfil
-            </button>
-            <button
-              type="button"
-              className="delete-profile"
-            >
-              Excluir perfil
-            </button>
-          </div>
+        </div>
+        <div className="user-buttons">
+          <button
+            type="button"
+            className="edit-profile"
+            onClick={handleEditProfile}
+          >
+            Editar perfil
+          </button>
+          <button
+            type="button"
+            className="delete-profile"
+          >
+            Excluir perfil
+          </button>
         </div>
       </section>
     </main>
