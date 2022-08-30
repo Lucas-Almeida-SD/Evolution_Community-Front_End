@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import UserInformation from '../components/UserInformation';
 import MyContext from '../context/MyContext';
 import communities from '../helpers/communities';
 import { User } from '../interfaces/User.interface';
+import requestDeleteUser from '../helpers/requestDeleteUser';
 import '../styles/Dashboard.scss';
 
 type Community = {
@@ -14,7 +16,7 @@ type Community = {
 };
 
 function Dashboard() {
-  const { user } = useContext(MyContext);
+  const { user, isFetching } = useContext(MyContext);
   const history = useHistory();
 
   const myUser = user as User;
@@ -26,6 +28,25 @@ function Dashboard() {
     const confirm = window.confirm('Gostaria de editar seu perfil?');
 
     if (confirm) history.push('/edit-profile');
+  };
+
+  const notifyDeleteUserError = (message: string) => toast.error(message);
+
+  const notifyDeleteUserSuccess = (message: string) => toast.success(message);
+
+  const handleDeleteProfile = async () => {
+    const confirm = window.confirm('Deseja excluir seu perfil? Isso não poderá ser desfeito.');
+
+    if (confirm) {
+      const request = await requestDeleteUser(myUser.token);
+
+      if (request.error) return notifyDeleteUserError(request.message);
+
+      notifyDeleteUserSuccess(request.message);
+
+      return history.push('/');
+    }
+    return null;
   };
 
   return (
@@ -60,6 +81,7 @@ function Dashboard() {
           <button
             type="button"
             className="edit-profile"
+            disabled={isFetching}
             onClick={handleEditProfile}
           >
             Editar perfil
@@ -67,6 +89,8 @@ function Dashboard() {
           <button
             type="button"
             className="delete-profile"
+            disabled={isFetching}
+            onClick={handleDeleteProfile}
           >
             Excluir perfil
           </button>
