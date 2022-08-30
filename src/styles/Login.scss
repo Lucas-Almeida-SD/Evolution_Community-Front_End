@@ -14,7 +14,7 @@
 
   section:nth-child(1) {
     p {
-      color:  var(--cinza4);
+      color:  var(--headline);
       font-size: 18px;
       font-family: 'Roboto', sans-serif;
       font-weight: 600;
@@ -44,7 +44,7 @@
   section:nth-child(2) {
     form {
       width: 100%;
-      background-color: #202024;
+      background-color: var(--formBackground);
       padding: 12px 18px;
       border-radius: 4px;
       display: flex;
@@ -71,8 +71,8 @@
         font-size: 14px;
         padding: 8px;
         border-radius: 4px;
-        color: var(--cinza3);
-        background-color: var(--cinza1);
+        color: var(--formInput);
+        background-color: var(--formInputBackground);
         border: 0;
       }
 
@@ -115,7 +115,7 @@
         justify-content: space-between;
 
         span {
-          color: var(--cinza4);
+          color: var(--paragraph);
           cursor: pointer;
         }
 
