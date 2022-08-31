@@ -6,6 +6,7 @@ import {
   validateDistrict,
   validateHouseNumber,
   validatePublicPlace,
+  validateComplement,
 } from '../helpers/userValidations';
 import { UserInfo } from '../interfaces/User.interface';
 import '../styles/AddressInformationForm.scss';
@@ -40,6 +41,7 @@ function AddressInformationForm(props: Props) {
     && validateDistrict(createUser)
     && validateHouseNumber(createUser)
     && validatePublicPlace(createUser)
+    && validateComplement(createUser)
   );
 
   return (
@@ -82,7 +84,7 @@ function AddressInformationForm(props: Props) {
         type="text"
         name="complement"
         value={createUser.complement}
-        isValid
+        isValid={validateComplement(createUser)}
         onChange={handleChange}
       />
       <Input
