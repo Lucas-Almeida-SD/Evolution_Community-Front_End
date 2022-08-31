@@ -1,0 +1,33 @@
+#page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:  8px 24px;
+  background-color: var(--cinza2);
+  box-shadow: 0 1px 2px var(--cinza1);
+
+  #page-title {
+    font-size: 24px;
+    color:  var(--cardHeadline);
+
+  }
+
+  #header-button {
+    font-size: 14px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--secondary);
+
+    &:hover:enabled {
+      cursor: pointer;
+      text-shadow: 0 0 4px var(--secondary);
+    }
+
+    &:hover:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
