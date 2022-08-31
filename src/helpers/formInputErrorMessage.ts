@@ -5,7 +5,7 @@ export default {
   CPF: 'Deve conter apenas caracteres numéricos e possuir comprimento igual a 11 caracteres.',
   phone: 'Deve conter apenas caracteres numéricos.',
   email: 'Deve ser um email no formato "exemplo@exemplo.com".',
-  password: 'Deve conter apenas caracteres numéricos e comprimento mínimo de 8 caracteres.',
+  password: 'Deve possuir comprimento mínimo de 8 caracteres.',
   publicPlace: 'Deve conter apenas letras.',
   address: 'Deve conter apenas letras e/ou caracteres numéricos.',
   houseNumber: 'Deve conter apenas caracteres numéricos.',
