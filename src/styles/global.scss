@@ -5,9 +5,9 @@
   --cinza4: #727274;
   --primary: #8257E5;
   --secondary: #DB4FBE;
+  --tertiary: #2cb67d;
   --background: #242629;
   --headline: #fffffe;
-  --headlineBackground: #2cb67d;
   --paragraph: #94a1b2;
   --paragraphBackground: #242629;
   --cardBackground: #16161a;
@@ -36,4 +36,22 @@ body {
   100% {
     transform: translateX(1.2);
   }
+}
+
+button {
+  font-family: 'Acme', sans-serif;
+}
+
+input,  .informations .user-information-div p {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+.registration-forms h2, .informations h3 {
+  font-family: 'Carter One', cursive;
+  font-weight: 100;
+}
+
+.registration-forms .input-div span, .informations .user-information-div h4 {
+  font-family: 'Secular One', sans-serif;
+  font-weight: 100;
 }
