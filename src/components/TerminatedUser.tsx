@@ -11,6 +11,8 @@ type Props = {
   goTo: string;
   email: string,
   password: string,
+  indexForm: number;
+  finishedStep: number;
 };
 
 function TerminatedUser(props: Props) {
@@ -22,6 +24,8 @@ function TerminatedUser(props: Props) {
     goTo,
     email,
     password,
+    indexForm,
+    finishedStep,
   } = props;
 
   const notifyGetUserError = () => toast.error('Oops. Algo deu errado!');
@@ -47,18 +51,20 @@ function TerminatedUser(props: Props) {
   };
 
   return (
-    <section id="completed-forms">
-      <div className="information">
-        <p>{message}</p>
-        <button
-          type="button"
-          disabled={isFetching}
-          onClick={handleClick}
-        >
-          {(!isFetching) ? 'OK' : <div className="loading">{`${''}`}</div>}
-        </button>
-      </div>
-    </section>
+    (indexForm === finishedStep) ? (
+      <section id="completed-forms">
+        <div className="information">
+          <p>{message}</p>
+          <button
+            type="button"
+            disabled={isFetching}
+            onClick={handleClick}
+          >
+            {(!isFetching) ? 'OK' : <div className="loading">{`${''}`}</div>}
+          </button>
+        </div>
+      </section>
+    ) : null
   );
 }
 

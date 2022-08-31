@@ -11,6 +11,8 @@ type Props = {
   request(): Promise<{ message: string, error: boolean }>
   isFetching: boolean
   setIsFetching: Dispatch<SetStateAction<boolean>>
+  indexForm: number;
+  finishedStep: number;
 };
 
 function CommunityForm(props: Props) {
@@ -21,6 +23,8 @@ function CommunityForm(props: Props) {
     request,
     isFetching,
     setIsFetching,
+    indexForm,
+    finishedStep,
   } = props;
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,28 +75,30 @@ function CommunityForm(props: Props) {
   };
 
   return (
-    <form id="community-form">
-      <h2>Selecione sua comunidade</h2>
-      {communities.map((plan) => renderPlanCard(plan.title, plan.value, plan.id, plan.src))}
-      <div className="change-step">
-        <button
-          type="button"
-          className="back"
-          disabled={isFetching}
-          onClick={handleClickPreviousBtn}
-        >
-          Volta
-        </button>
-        <button
-          type="button"
-          className="next"
-          disabled={!fieldsIsValid() || isFetching}
-          onClick={handleClickFinishtBtn}
-        >
-          {(!isFetching) ? 'Finalizar' : <div className="loading">{`${''}`}</div>}
-        </button>
-      </div>
-    </form>
+    (indexForm === finishedStep) ? (
+      <form id="community-form">
+        <h2>Selecione sua comunidade</h2>
+        {communities.map((plan) => renderPlanCard(plan.title, plan.value, plan.id, plan.src))}
+        <div className="change-step">
+          <button
+            type="button"
+            className="back"
+            disabled={isFetching}
+            onClick={handleClickPreviousBtn}
+          >
+            Volta
+          </button>
+          <button
+            type="button"
+            className="next"
+            disabled={!fieldsIsValid() || isFetching}
+            onClick={handleClickFinishtBtn}
+          >
+            {(!isFetching) ? 'Finalizar' : <div className="loading">{`${''}`}</div>}
+          </button>
+        </div>
+      </form>
+    ) : null
   );
 }
 
