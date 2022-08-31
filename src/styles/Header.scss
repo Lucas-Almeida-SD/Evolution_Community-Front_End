@@ -2,18 +2,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:  8px 24px;
+  padding:  14px 20px;
   background-color: var(--cinza2);
   box-shadow: 0 1px 2px var(--cinza1);
 
   #page-title {
-    font-size: 24px;
-    color:  var(--cardHeadline);
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    font-weight: 200;
+    color:  var(--primary);
 
   }
 
   #header-button {
-    font-size: 14px;
+    font-size: 16px;
     border: 0;
     display: flex;
     align-items: center;
@@ -28,6 +30,20 @@
 
     &:hover:disabled {
       cursor: not-allowed;
+    }
+  }
+}
+
+@media screen and (min-width: 601px) {
+  #page-header {
+  
+    #page-title {
+      font-size: 24px;
+  
+    }
+  
+    #header-button {
+      font-size: 18px;
     }
   }
 }

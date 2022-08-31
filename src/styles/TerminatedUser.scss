@@ -16,6 +16,7 @@
     align-items: center;
     justify-content: center;
     width: 60%;
+    max-width: 400px;
     background-color: var(--cinza2);
     padding: 30px 20px;
     border-radius: 4px;
@@ -23,14 +24,17 @@
 
     p {
       text-align: center;
-      color:  var(--cinza4);
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      color:  var(--paragraph);
     }
 
     button {
       display: flex;
       align-items: center;
       justify-content: center;
-      color:  var(--cinza1);
+      font-size: 14px;
       background-color: var(--primary);
       border-radius: 4px;
       width: 60px;
@@ -53,6 +57,28 @@
         border-radius: 50%;
         background-color: var(--cinza1);
         animation: pulse 1s infinite alternate;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 601px) {
+  #completed-forms {
+  
+    .information {
+  
+      p {
+        font-size: 20px;
+        color:  var(--cinza4);
+      }
+  
+      button {
+        font-size: 16px;
+  
+        .loading {
+          width: 30px;
+          height: 30px;
+        }
       }
     }
   }

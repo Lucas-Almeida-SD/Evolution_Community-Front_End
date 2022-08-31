@@ -24,6 +24,10 @@
         align-items: center;
         justify-content: center;
         background-color: var(--paragraph);
+
+        span {
+          font-family: 'ABeeZee', sans-serif;
+        }
   
         img {
           width: 30px;
@@ -59,8 +63,12 @@
     }
 
     .registration-forms {
+      display: flex;
+      justify-content: center;
+
       form {
         width: 100%;
+        max-width: 600px;
         display: flex;
         flex-direction: column;
         background-color: var(--formBackground);
@@ -72,6 +80,8 @@
 
         h2 {
           text-align: center;
+          font-size: 18px;
+          font-weight: 100;
           color: var(--formHeadline);
           background-color: var(--primary);
           width: 80%;
@@ -138,6 +148,75 @@
       }
     }
   }  
+}
+
+@media screen and (min-width: 601px) {
+  #registration {
+ 
+    #registration-steps {
+  
+      .progress-bar {
+        gap: 100px;
+    
+        .step {
+          width: 42px;
+          height: 42px;
+    
+          img {
+            width: 40px;
+            height: 40px;
+          }
+    
+          &::before, &::after {
+            left: 46px;
+            height: 6px;
+            width: 92px;
+          }
+        }
+      }
+  
+      .registration-forms {
+  
+        form {
+          padding: 16px;
+  
+          h2 {
+            font-size: 22px;
+          }
+  
+          .input-div {
+            
+            span {
+              font-size: 18px;
+            }
+
+            .content-div {
+              gap: 8px;
+  
+              label {
+  
+                input {
+                  font-size: 16px;
+                }
+              }
+  
+              img {
+                width: 28px;
+              }
+            }
+          }
+          
+          .change-step {
+        
+            .back, .next {
+              font-size: 18px;
+              width: 100px;
+            }
+          }
+        }
+      }
+    }  
+  }
 }
 
 @keyframes loadBar {
