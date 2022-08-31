@@ -9,7 +9,7 @@ function UserInformation(props: Props) {
   const { title, content } = props;
   return (
     <div className="user-information-div">
-      <h3>{title}</h3>
+      <h4>{title}</h4>
       <p>{content}</p>
     </div>
   );
