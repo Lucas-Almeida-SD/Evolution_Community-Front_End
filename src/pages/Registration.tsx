@@ -64,6 +64,10 @@ function Registration() {
     }
   }, []);
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [finishedStep]);
+
   const request = async (): Promise<{ message: string, error: boolean }> => {
     const newCreateUser = JSON.parse(JSON.stringify({
       ...createUser,
@@ -112,23 +116,22 @@ function Registration() {
             {renderSteps()}
           </div>
           <div className="registration-forms">
-            {(finishedStep === 0) && (
             <PersonalInformationForm
               setFinishedStep={setFinishedStep}
               createUser={createUser}
               setCreateUser={setCreateUser}
               isRegistrationRoute={isRegistrationRoute}
               goTo={(isRegistrationRoute ? '/' : '/dashboard')}
+              indexForm={0}
+              finishedStep={finishedStep}
             />
-            )}
-            {(finishedStep === 1) && (
             <AddressInformationForm
               setFinishedStep={setFinishedStep}
               createUser={createUser}
               setCreateUser={setCreateUser}
+              indexForm={1}
+              finishedStep={finishedStep}
             />
-            )}
-            {(finishedStep === 2) && (
             <CommunityForm
               setFinishedStep={setFinishedStep}
               createUser={createUser}
@@ -136,16 +139,17 @@ function Registration() {
               request={request}
               isFetching={isFetching}
               setIsFetching={setIsFetching}
+              indexForm={2}
+              finishedStep={finishedStep}
             />
-            )}
-            {(finishedStep > 2) && (
             <TerminatedUser
               message={message}
               goTo={(isRegistrationRoute ? '/' : '/dashboard')}
               email={(user) ? (user as User).email : ''}
               password={createUser.password}
+              indexForm={3}
+              finishedStep={finishedStep}
             />
-            )}
           </div>
         </section>
       </main>
