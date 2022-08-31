@@ -24,6 +24,8 @@
     ],
     "root": true,
     "rules": {
-        "no-alert": "off"
+        "no-alert": "off",
+        "max-len": ["error", 100],
+        "complexity": ["error", 8]
     }
 }
