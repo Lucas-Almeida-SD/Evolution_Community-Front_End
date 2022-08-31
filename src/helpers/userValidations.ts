@@ -4,7 +4,7 @@ import { UserInfo } from '../interfaces/User.interface';
 const validateString = (string: string): boolean => {
   if (string[0] === ' ' || string[string.length - 1] === ' ') return false;
 
-  const regex = /[a-zA-zà-úÀ-Ú\s]{1,}/;
+  const regex = /[a-zA-zà-úÀ-Ú ]{1,}/;
   const match = string.match(regex);
 
   if (!match || match[0] !== string) return false;
@@ -16,6 +16,17 @@ const validateNumber = (string: string): boolean => {
   if (string[0] === ' ' || string[string.length - 1] === ' ') return false;
 
   const regex = /[0-9]{1,}/;
+  const match = string.match(regex);
+
+  if (!match || match[0] !== string) return false;
+
+  return true;
+};
+
+const validateStringNumber = (string: string): boolean => {
+  if (string[0] === ' ' || string[string.length - 1] === ' ') return false;
+
+  const regex = /[a-zA-zà-úÀ-Ú0-9 ]{1,}/;
   const match = string.match(regex);
 
   if (!match || match[0] !== string) return false;
@@ -118,7 +129,7 @@ export const validatePublicPlace = (user: UserInfo): boolean => {
 export const validateAddress = (user: UserInfo): boolean => {
   const { address } = user;
 
-  if (!validateString(address)) return false;
+  if (!validateStringNumber(address)) return false;
 
   if (address.length === 0) return false;
 
@@ -138,9 +149,19 @@ export const validateHouseNumber = (user: UserInfo): boolean => {
 export const validateDistrict = (user: UserInfo): boolean => {
   const { district } = user;
 
-  if (!validateString(district)) return false;
+  if (!validateStringNumber(district)) return false;
 
   if (district.length === 0) return false;
+
+  return true;
+};
+
+export const validateComplement = (user: UserInfo): boolean => {
+  const { complement } = user;
+
+  if (complement.length === 0) return true;
+
+  if (!validateStringNumber(complement)) return false;
 
   return true;
 };
@@ -148,7 +169,7 @@ export const validateDistrict = (user: UserInfo): boolean => {
 export const validateCity = (user: UserInfo): boolean => {
   const { city } = user;
 
-  if (!validateString(city)) return false;
+  if (!validateStringNumber(city)) return false;
 
   if (city.length === 0) return false;
 
