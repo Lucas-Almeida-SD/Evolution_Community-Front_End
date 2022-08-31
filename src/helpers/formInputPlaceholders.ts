@@ -1,0 +1,16 @@
+export default {
+  fullname: 'Nome Sobrenome',
+  birthDate: '',
+  RG: '1234567',
+  CPF: '12345678910',
+  phone: '9091929394',
+  email: 'exemplo@exemplo.com',
+  password: '',
+  publicPlace: 'Avenida',
+  address: 'Ribeiro Júnior',
+  houseNumber: '1234',
+  complement: 'Bloco A, apt. 100',
+  district: 'São Francisco',
+  city: 'Cidade',
+  CEP: '12345678',
+};
