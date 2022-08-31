@@ -1,6 +1,9 @@
 import React from 'react';
 import correctImg from '../assets/correct.png';
 import incorrectImg from '../assets/incorrect.svg';
+import formInputErrorMessage from '../helpers/formInputErrorMessage';
+import formInputPlaceholders from '../helpers/formInputPlaceholders';
+import UserAttr from '../helpers/UserAttr.type';
 
 type Props = {
   htmlFor: string;
@@ -35,6 +38,7 @@ function Input(props: Props) {
             type={type}
             name={name}
             value={value}
+            placeholder={formInputPlaceholders[name as UserAttr]}
             onChange={onChange}
           />
         </label>
@@ -43,6 +47,7 @@ function Input(props: Props) {
           alt={(isValid) ? 'Correct' : 'Incorrect'}
         />
       </div>
+      {(!isValid) && <p className="error-message">{formInputErrorMessage[name as UserAttr]}</p>}
     </div>
   );
 }
