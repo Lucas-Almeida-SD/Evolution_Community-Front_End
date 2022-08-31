@@ -8,6 +8,7 @@ import { User, UserInfo } from '../interfaces/User.interface';
 import '../styles/Registration.scss';
 import TerminatedUser from '../components/TerminatedUser';
 import MyContext from '../context/MyContext';
+import Header from '../components/Header';
 
 function Registration() {
   const { isFetching, setIsFetching, user } = useContext(MyContext);
@@ -92,7 +93,7 @@ function Registration() {
       steps.push(
         <div
           key={`step-${index + 1}`}
-          className={`step${(finishedStep > index) ? ' finished' : ''}`}
+          className={`step ${(finishedStep > index) ? 'finished' : ''}`}
         >
           {(finishedStep <= index) ? <span>{index + 1}</span>
             : <img src={checkImg} alt="Finished" />}
@@ -103,49 +104,52 @@ function Registration() {
   };
 
   return (
-    <main id="registration">
-      <section id="registration-steps">
-        <div className="progress-bar">
-          {renderSteps()}
-        </div>
-        <div className="registration-forms">
-          {(finishedStep === 0) && (
-          <PersonalInformationForm
-            setFinishedStep={setFinishedStep}
-            createUser={createUser}
-            setCreateUser={setCreateUser}
-            isRegistrationRoute={isRegistrationRoute}
-            goTo={(isRegistrationRoute ? '/' : '/dashboard')}
-          />
-          )}
-          {(finishedStep === 1) && (
-          <AddressInformationForm
-            setFinishedStep={setFinishedStep}
-            createUser={createUser}
-            setCreateUser={setCreateUser}
-          />
-          )}
-          {(finishedStep === 2) && (
-          <CommunityForm
-            setFinishedStep={setFinishedStep}
-            createUser={createUser}
-            setCreateUser={setCreateUser}
-            request={request}
-            isFetching={isFetching}
-            setIsFetching={setIsFetching}
-          />
-          )}
-          {(finishedStep > 2) && (
-          <TerminatedUser
-            message={message}
-            goTo={(isRegistrationRoute ? '/' : '/dashboard')}
-            email={(user) ? (user as User).email : ''}
-            password={createUser.password}
-          />
-          )}
-        </div>
-      </section>
-    </main>
+    <>
+      <Header goto="/" backButtonName={(isRegistrationRoute) ? 'Login' : 'Logout'} />
+      <main id="registration">
+        <section id="registration-steps">
+          <div className="progress-bar">
+            {renderSteps()}
+          </div>
+          <div className="registration-forms">
+            {(finishedStep === 0) && (
+            <PersonalInformationForm
+              setFinishedStep={setFinishedStep}
+              createUser={createUser}
+              setCreateUser={setCreateUser}
+              isRegistrationRoute={isRegistrationRoute}
+              goTo={(isRegistrationRoute ? '/' : '/dashboard')}
+            />
+            )}
+            {(finishedStep === 1) && (
+            <AddressInformationForm
+              setFinishedStep={setFinishedStep}
+              createUser={createUser}
+              setCreateUser={setCreateUser}
+            />
+            )}
+            {(finishedStep === 2) && (
+            <CommunityForm
+              setFinishedStep={setFinishedStep}
+              createUser={createUser}
+              setCreateUser={setCreateUser}
+              request={request}
+              isFetching={isFetching}
+              setIsFetching={setIsFetching}
+            />
+            )}
+            {(finishedStep > 2) && (
+            <TerminatedUser
+              message={message}
+              goTo={(isRegistrationRoute ? '/' : '/dashboard')}
+              email={(user) ? (user as User).email : ''}
+              password={createUser.password}
+            />
+            )}
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 
