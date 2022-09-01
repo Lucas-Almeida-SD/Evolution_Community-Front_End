@@ -11,6 +11,7 @@ import MyContext from '../context/MyContext';
 import Header from '../components/Header';
 import requestCreateUser from '../helpers/requestCreateUser';
 import requestUpdateUser from '../helpers/requestUpdateUser';
+import brazilianStates from '../helpers/brazilianStates';
 
 function Registration() {
   const { isFetching, setIsFetching, user } = useContext(MyContext);
@@ -40,6 +41,7 @@ function Registration() {
     phone: '',
     community: '',
     publicPlace: '',
+    state: brazilianStates[0],
   });
 
   useEffect(() => {
@@ -60,6 +62,7 @@ function Registration() {
         phone: newUser.phone,
         community: newUser.community,
         publicPlace: newUser.publicPlace,
+        state: newUser.state,
       }));
     }
   }, []);
