@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import UserInformation from '../components/UserInformation';
@@ -24,6 +24,10 @@ function Dashboard() {
 
   const myCommunity = communities
     .find((community) => community.value === myUser.community) as Community;
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   const handleEditProfile = () => {
     const confirm = window.confirm('Gostaria de editar seu perfil?');
