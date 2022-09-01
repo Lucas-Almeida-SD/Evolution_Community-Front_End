@@ -6,9 +6,9 @@ type Response = {
 export default async (
   token: string,
 ): Promise<Response> => {
-  const URL = 'https://evolution-community.herokuapp.com/users';
-
   try {
+    const URL = process.env.REACT_APP_ENDPOINT_DELETE_USER as string;
+
     const result = await fetch(URL, {
       method: 'DELETE',
       headers: {

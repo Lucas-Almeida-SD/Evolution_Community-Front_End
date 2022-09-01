@@ -4,9 +4,9 @@ export default async (
   email: string,
   password: string,
 ): Promise<DataUser | boolean> => {
-  const URL = 'https://evolution-community.herokuapp.com/users/login';
-
   try {
+    const URL = process.env.REACT_APP_ENDPOINT_GET_USER as string;
+
     const result = await fetch(URL, {
       method: 'POST',
       headers: {
