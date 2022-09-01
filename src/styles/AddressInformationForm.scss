@@ -35,4 +35,39 @@
       }
     }
   }
+
+  .select-div {
+    span {
+      color: var(--formInput);
+    }
+
+    .content-div {
+
+      select {
+        width: 100%;
+        font-size: 14px;
+        padding: 4px;
+        border-radius: 4px;
+        color: var(--formInput);
+        background-color: var(--formInputBackground);
+        border: 0;
+        cursor: pointer;
+
+        &:focus {
+          outline: 1px solid var(--primary);
+        }
+      }
+
+      img {
+        width: 24px;
+      }
+    }
+
+    .error-message {
+      color:  #FF0018;
+      font-family: 'ABeeZee', sans-serif;
+      font-size: 12px;
+      padding-right: 28px;
+    }
+  }
 }

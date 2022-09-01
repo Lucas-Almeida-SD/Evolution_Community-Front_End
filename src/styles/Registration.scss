@@ -91,7 +91,7 @@
           transform: translateY(-30px);
         }
 
-        .input-div {
+        .input-div, .select-div {
           display: flex;
           flex-direction: column;
           gap: 4px;
@@ -100,11 +100,17 @@
             display: flex;
             align-items: center;
             gap: 4px;
+          }
+        }
+
+        .input-div {
+
+          .content-div {
 
             label {
               width: 100%;
 
-              input {
+              input, option {
                 width: 100%;
               }
             }
@@ -205,6 +211,29 @@
                 input {
                   font-size: 16px;
                 }
+              }
+  
+              img {
+                width: 28px;
+              }
+            }
+
+            .error-message {
+              font-size: 14px;
+            }
+          }
+
+          .select-div {
+            
+            span {
+              font-size: 18px;
+            }
+
+            .content-div {
+              gap: 8px;
+  
+              select {
+                font-size: 16px;
               }
   
               img {
