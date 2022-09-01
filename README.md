@@ -22,6 +22,8 @@ Após finalizar o cadastro, os dados do usuário são enviados para a `API`, no 
 
 - [TypeScript](https://www.typescriptlang.org/)
 
+- [React Hot Toast](https://react-hot-toast.com/)
+
 - [ESlint](https://eslint.org/)
 
 - [Sass](https://sass-lang.com/)
