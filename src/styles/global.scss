@@ -42,7 +42,7 @@ button {
   font-family: 'Acme', sans-serif;
 }
 
-input,  .informations .user-information-div p {
+input, option, .informations .user-information-div p {
   font-family: 'ABeeZee', sans-serif;
 }
 
@@ -51,7 +51,10 @@ input,  .informations .user-information-div p {
   font-weight: 100;
 }
 
-.registration-forms .input-div span, .informations .user-information-div h4 {
+.registration-forms .input-div span,
+.registration-forms .select-div span,
+.informations .user-information-div h4
+{
   font-family: 'Secular One', sans-serif;
   font-weight: 100;
 }
