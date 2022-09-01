@@ -14,6 +14,7 @@ export interface UserInfo {
   phone: string,
   community: string,
   publicPlace: string,
+  state: string,
 }
 
 export interface User extends UserInfo {
