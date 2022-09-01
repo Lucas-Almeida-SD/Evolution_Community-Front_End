@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# Evolution Community
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Link](https://evolution-community.web.app/) para acessar a página do projeto.
 
-## Available Scripts
+[Link](https://github.com/Lucas-Almeida-SD/Evolution_Community-Back_End) para acessar o repositório da parte `back-end` do projeto.
 
-In the project directory, you can run:
+O projeto consiste em uma aplicação `fullstack` para cadastrar usuários em comunidades específicas, com o objetivo de receber informações sobre assuntos relacionados às respectivas comunidades, além de concorrerem a prêmios incríveis.
 
-### `npm start`
+A parte `front-end` permite ao usuário realizar o seu cadastro através de um __formulário multi step__, possuindo três etapas, sendo:
+    
+  1. Informações pessoais;
+    
+  2. Informações de endereço;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  3. Seleção da comunidade.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Após finalizar o cadastro, os dados do usuário são enviados para a `API`, no qual se encontra na parte `back-end` desta aplicação, para que ela armazene as informações do usuário no banco de dados. Após esta operação, o usuário pode realizar seu login na aplicação e visualizar os seus dados, podendo atualizá-los a qualquer momento, preenchendo um formulário igual ao do momento de cadastro, ou se desejar, pode deletá-lo. 
 
-### `npm test`
+## Tecnologias
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React.js](https://pt-br.reactjs.org/)
 
-### `npm run build`
+- [TypeScript](https://www.typescriptlang.org/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [ESlint](https://eslint.org/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Sass](https://sass-lang.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [date-fns](https://date-fns.org/)
 
-### `npm run eject`
+## Como executar
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Clone o projeto e acesse a pasta do mesmo.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+$ git clone git@github.com:Lucas-Almeida-SD/Evolution_Community-Front_End.git
+$ cd Evolution_Community-Front_End
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Para iniciá-lo, siga os passos abaixo:
+```bash
+# Instalar as dependências
+$ npm install
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Iniciar o projeto
+$ npm start
+```
+O app estará disponível no seu browser pelo endereço http://localhost:3000.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Lembrando que será necessário inserir os endpoints da sua API no arquivo `.env.local.example` e renomear este arquivo para `.env.local` para que a aplicação funcione corretamente.
