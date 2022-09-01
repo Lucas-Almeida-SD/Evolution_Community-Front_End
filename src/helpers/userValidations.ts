@@ -191,6 +191,14 @@ export const validateCEP = (user: UserInfo): boolean => {
   return true;
 };
 
+export const validateState = (user: UserInfo): boolean => {
+  const { state } = user;
+
+  if (!validateString(state)) return false;
+
+  return true;
+};
+
 export const validateCommunity = (user: UserInfo): boolean => {
   const { community } = user;
 
