@@ -82,6 +82,7 @@ function Dashboard() {
               <UserInformation title="Bairro" content={myUser.district} />
               <UserInformation title="Cidade" content={myUser.city} />
               <UserInformation title="CEP" content={myUser.CEP} />
+              <UserInformation title="Estado" content={myUser.state} />
             </div>
           </div>
           <div className="user-buttons">
