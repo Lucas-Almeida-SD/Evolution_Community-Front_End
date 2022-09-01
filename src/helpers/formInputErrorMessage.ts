@@ -9,7 +9,8 @@ export default {
   publicPlace: 'Deve conter apenas letras.',
   address: 'Deve conter apenas letras e/ou caracteres numéricos.',
   houseNumber: 'Deve conter apenas caracteres numéricos.',
-  complement: '(Opcional) - Deve conter apenas letras e/ou caracteres numéricos.',
+  complement: `(Opcional) - Deve conter apenas letras e/ou caracteres numéricos 
+    e/ou os caracteres escpeciais " . , / \\ - ".`,
   district: 'Deve conter apenas letras e/ou caracteres numéricos.',
   city: 'Deve conter apenas letras e/ou caracteres numéricos.',
   CEP: 'Deve conter apenas caracteres numéricos e comprimento igual a 8 caracteres.',
