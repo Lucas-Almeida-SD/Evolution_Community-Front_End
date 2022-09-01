@@ -7,10 +7,12 @@ import {
   validateHouseNumber,
   validatePublicPlace,
   validateComplement,
+  validateState,
 } from '../helpers/userValidations';
 import { UserInfo } from '../interfaces/User.interface';
 import '../styles/AddressInformationForm.scss';
 import Input from './Input';
+import StateSelect from './StateSelect';
 
 type Props = {
   setFinishedStep: Dispatch<SetStateAction<number>>
@@ -29,7 +31,7 @@ function AddressInformationForm(props: Props) {
     finishedStep,
   } = props;
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = target;
     setCreateUser((currentValue) => ({ ...currentValue, [name]: value }));
   };
@@ -124,6 +126,11 @@ function AddressInformationForm(props: Props) {
           name="CEP"
           value={createUser.CEP}
           isValid={validateCEP(createUser)}
+          onChange={handleChange}
+        />
+        <StateSelect
+          isValid={validateState(createUser)}
+          value={createUser.state}
           onChange={handleChange}
         />
         <div className="change-step">
