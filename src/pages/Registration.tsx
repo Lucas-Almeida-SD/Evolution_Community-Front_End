@@ -9,6 +9,8 @@ import '../styles/Registration.scss';
 import TerminatedUser from '../components/TerminatedUser';
 import MyContext from '../context/MyContext';
 import Header from '../components/Header';
+import requestCreateUser from '../helpers/requestCreateUser';
+import requestUpdateUser from '../helpers/requestUpdateUser';
 
 function Registration() {
   const { isFetching, setIsFetching, user } = useContext(MyContext);
@@ -17,8 +19,6 @@ function Registration() {
 
   const newUser = user as User;
   const isRegistrationRoute = pathname.includes('registration');
-
-  const URL = 'https://evolution-community.herokuapp.com/users';
 
   const message = (isRegistrationRoute)
     ? 'Usuário cadastrado com sucesso!'
@@ -69,25 +69,10 @@ function Registration() {
   }, [finishedStep]);
 
   const request = async (): Promise<{ message: string, error: boolean }> => {
-    const newCreateUser = JSON.parse(JSON.stringify({
-      ...createUser,
-      birthDate: createUser.birthDate.split('-').reverse().join('/'),
-    }));
+    const response = (isRegistrationRoute) ? await requestCreateUser(createUser)
+      : await requestUpdateUser(createUser, newUser);
 
-    if (!isRegistrationRoute) delete newCreateUser.email;
-
-    const result = await fetch(URL, {
-      method: (isRegistrationRoute) ? 'POST' : 'PUT',
-      headers: {
-        'Content-type': 'application/json',
-        authorization: (isRegistrationRoute) ? '' : newUser.token,
-      },
-      body: JSON.stringify(newCreateUser),
-    });
-
-    const json = await result.json();
-
-    return json as { message: string, error: boolean };
+    return response;
   };
 
   const renderSteps = (): JSX.Element[] => {
