@@ -14,4 +14,5 @@ export default {
   district: 'Deve conter apenas letras e/ou caracteres numéricos.',
   city: 'Deve conter apenas letras e/ou caracteres numéricos.',
   CEP: 'Deve conter apenas caracteres numéricos e comprimento igual a 8 caracteres.',
+  state: 'Deve conter apenas letras',
 };
