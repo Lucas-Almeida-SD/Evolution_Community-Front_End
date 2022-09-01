@@ -161,7 +161,12 @@ export const validateComplement = (user: UserInfo): boolean => {
 
   if (complement.length === 0) return true;
 
-  if (!validateStringNumber(complement)) return false;
+  if (complement[0] === ' ' || complement[complement.length - 1] === ' ') return false;
+
+  const regex = /[a-zA-zà-úÀ-Ú0-9.,/\- ]{1,}/;
+  const match = complement.match(regex);
+
+  if (!match || match[0] !== complement) return false;
 
   return true;
 };
