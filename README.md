@@ -24,6 +24,8 @@ Para esta parte do projeto, foi utilizado a prática de `mobile first` durante o
 
 - [TypeScript](https://www.typescriptlang.org/)
 
+- [Docker](https://www.docker.com/)
+
 - [React Hot Toast](https://react-hot-toast.com/)
 
 - [ESlint](https://eslint.org/)
@@ -42,13 +44,31 @@ $ cd Evolution_Community-Front_End
 ```
 
 Para iniciá-lo, siga os passos abaixo:
-```bash
-# Instalar as dependências
-$ npm install
 
-# Iniciar o projeto
-$ npm start
-```
+<details>
+  <summary><strong>Com Docker</strong></summary>
+
+  ```bash
+  # Criar imagem
+  $ docker image build -t evolution-community-frontend ./
+
+  # Criar container
+  $ docker container run -dit --name evolution-community-frontend -p 3000:3000 evolution-community-frontend
+  ```
+</details>
+
+<details>
+  <summary><strong>Sem Docker</strong></summary>
+
+  ```bash
+  # Instalar as dependências
+  $ npm install
+
+  # Iniciar o projeto
+  $ npm start
+  ```
+</details>
+
 O app estará disponível no seu browser pelo endereço http://localhost:3000.
 
 Lembrando que será necessário inserir os endpoints da sua API no arquivo `.env.local.example` e renomear este arquivo para `.env.local` para que a aplicação funcione corretamente.
