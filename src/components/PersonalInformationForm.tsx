@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   validateBirthDate,
@@ -44,7 +44,7 @@ function PersonalInformationForm(props: Props) {
     setFinishedStep((currentValue) => currentValue + 1);
   };
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
     setCreateUser((currentValue) => ({ ...currentValue, [name]: value }));
   };
@@ -87,7 +87,7 @@ function PersonalInformationForm(props: Props) {
           htmlFor="rg"
           spanContent="RG"
           id="rg"
-          type="text"
+          type="number"
           name="RG"
           value={createUser.RG}
           isValid={validateRG(createUser)}
@@ -97,7 +97,7 @@ function PersonalInformationForm(props: Props) {
           htmlFor="cpf"
           spanContent="CPF"
           id="cpf"
-          type="text"
+          type="number"
           name="CPF"
           value={createUser.CPF}
           isValid={validateCPF(createUser)}
@@ -107,7 +107,7 @@ function PersonalInformationForm(props: Props) {
           htmlFor="phone"
           spanContent="Telefone"
           id="phone"
-          type="text"
+          type="number"
           name="phone"
           value={createUser.phone}
           isValid={validatePhone(createUser)}
