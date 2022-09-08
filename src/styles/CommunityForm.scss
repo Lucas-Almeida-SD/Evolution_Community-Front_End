@@ -16,17 +16,14 @@
     max-width: 320px;
     transition: 0.5s;
     transform: scale(0.9);
+    cursor: pointer;
 
-    label {
+    img {
+      width: 100%;
+    }
 
-      img {
-        width: 100%;
-        cursor: pointer;
-      }
-
-      input[type=radio] {
-        display: none;
-      }
+    input[type=radio] {
+      display: none;
     }
   }
 
