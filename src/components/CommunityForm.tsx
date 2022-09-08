@@ -40,22 +40,21 @@ function CommunityForm(props: Props) {
     id: string,
     src: string,
   ) => (
-    <div
+    <label
+      htmlFor={id}
       className={`community-card${(value === createUser.community) ? ' selected' : ''}`}
       key={id}
     >
       <span>{title}</span>
-      <label htmlFor={id}>
-        <img src={src} alt={title} />
-        <input
-          id={id}
-          type="radio"
-          value={value}
-          name="community"
-          onChange={handleChange}
-        />
-      </label>
-    </div>
+      <img src={src} alt={title} />
+      <input
+        id={id}
+        type="radio"
+        value={value}
+        name="community"
+        onChange={handleChange}
+      />
+    </label>
   );
 
   const handleClickPreviousBtn = () => {
